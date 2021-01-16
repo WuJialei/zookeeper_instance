@@ -8,6 +8,7 @@ public class UpdateNode {
         try {
             Stat stat = curatorFramework.checkExists().forPath(path);
             if (stat != null) {
+                System.out.println("更新时间为：" + System.currentTimeMillis());
                 System.out.println("update start!");
                 curatorFramework.setData()
                 .forPath(path, content.getBytes());
@@ -15,10 +16,10 @@ public class UpdateNode {
                 return true;
             } else {
                 return false;
-            }            
+            }
         }catch(Exception e){
             e.printStackTrace();
-        } 
+        }
 
         return false;
     }
